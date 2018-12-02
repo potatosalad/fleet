@@ -1,7 +1,7 @@
 defmodule Fleet.MixProject do
   use Mix.Project
 
-  def project do
+  def project() do
     [
       app: :fleet,
       version: "0.1.0",
@@ -20,7 +20,7 @@ defmodule Fleet.MixProject do
   # Configuration for the OTP application.
   #
   # Type `mix help compile.app` for more information.
-  def application do
+  def application() do
     [
       mod: {Fleet.Application, []},
       extra_applications: [:logger, :runtime_tools]
@@ -34,8 +34,9 @@ defmodule Fleet.MixProject do
   # Specifies your project dependencies.
   #
   # Type `mix help deps` for examples and options.
-  defp deps do
+  defp deps() do
     [
+      {:ecto, "~> 3.0", override: true},
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"}
     ]
@@ -47,7 +48,7 @@ defmodule Fleet.MixProject do
   #     $ mix ecto.setup
   #
   # See the documentation for `Mix` for more info on aliases.
-  defp aliases do
+  defp aliases() do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],

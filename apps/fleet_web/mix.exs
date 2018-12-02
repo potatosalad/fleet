@@ -1,7 +1,7 @@
 defmodule FleetWeb.MixProject do
   use Mix.Project
 
-  def project do
+  def project() do
     [
       app: :fleet_web,
       version: "0.1.0",
@@ -21,7 +21,7 @@ defmodule FleetWeb.MixProject do
   # Configuration for the OTP application.
   #
   # Type `mix help compile.app` for more information.
-  def application do
+  def application() do
     [
       mod: {FleetWeb.Application, []},
       extra_applications: [:logger, :runtime_tools]
@@ -35,13 +35,15 @@ defmodule FleetWeb.MixProject do
   # Specifies your project dependencies.
   #
   # Type `mix help deps` for examples and options.
-  defp deps do
+  defp deps() do
     [
+      {:ecto, "~> 3.0", override: true},
       {:phoenix, "~> 1.4.0"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
       {:gettext, "~> 0.11"},
       {:fleet, in_umbrella: true},
+      {:fleet_graphql, in_umbrella: true},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"}
     ]
@@ -51,7 +53,7 @@ defmodule FleetWeb.MixProject do
   # For example, we extend the test task to create and migrate the database.
   #
   # See the documentation for `Mix` for more info on aliases.
-  defp aliases do
+  defp aliases() do
     [test: ["ecto.create --quiet", "ecto.migrate", "test"]]
   end
 end
